@@ -1,4 +1,4 @@
-# IDS
+# Intrussion Detection System (IDS)
 Instalasi SNORT sebagai Intrussion Detection System
 ```
 apt-get install snort
