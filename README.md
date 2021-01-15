@@ -27,12 +27,11 @@ Penjelasan rules diatas:
     kolom 3 dan 4 = source ip address dan nomor port, dalam hal ini aalah segala alamat dan segala port
     kolom 5 dan 6 = destination ip address dan port, dalam hal ini $HOME_NET dan segala port
     kolom 7 adalah options
-        log message
-        unique rule identifier (sid) which for local rules needs to be 1000001 or higher
-        rule version number.
+        msg adalah pesan pada log file /var/log/snort/alert (dalam hal ini adalah "ICMP test")
+        sid adalah suatu id unique dengan nilai > 1000000, dalam hal ini 1000001
+        rev adalah suatu identitas nomor versi dari rule menurut kita, dalam hal ini adalah 001.
 ```
 Jadi rule diatas adalah alert terhadap semua ping ke alamat $HOME_NET, dan jika ada terjadi ping ke server, maka snort akan melakukan log ke /etc/snort/alert dan menghasilkan file tcpdump.log.xxxxxxxxx. Untuk membaca isi file tcpdump dapat menggunakan perintah:
 ```
 snort -r tcpdump.log.xxxxxxxxxx
-```
 ```
