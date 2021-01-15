@@ -36,3 +36,11 @@ Jadi rule diatas adalah alert terhadap semua ping ke alamat $HOME_NET, dan jika 
 ```
 snort -r tcpdump.log.xxxxxxxxxx
 ```
+Setelah perubahan rule, maka snort perlu direstart kembali
+```
+service snort restart
+```
+jika snort gagal distart, maka perlu diperiksa penyebab kegagalan, misalnya ada kesalahan dalam pengetikan rule, maka dapat dilihat pada syslog
+```
+tail /etc/log/syslog
+```
