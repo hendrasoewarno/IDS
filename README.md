@@ -23,7 +23,7 @@ pico /etc/snort/rules/local.rules
 Penjelasan rules diatas:
 ```
     kolom 1 = action untuk terhadap rule yang cocok (pass, log, alert), dalam hal ini adalah alert
-    kolom 2 = protokol yang dipantau (TCP, UDP atau ICMP),dalam hal ini adalah icmp
+    kolom 2 = protokol yang dipantau (IP, TCP, UDP atau ICMP),dalam hal ini adalah icmp
     kolom 3 dan 4 = source ip address dan nomor port, dalam hal ini aalah segala alamat dan segala port
     kolom 5 dan 6 = destination ip address dan port, dalam hal ini $HOME_NET dan segala port
     kolom 7 adalah options
