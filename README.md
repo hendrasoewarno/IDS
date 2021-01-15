@@ -44,3 +44,8 @@ jika snort gagal distart, maka perlu diperiksa penyebab kegagalan, misalnya ada 
 ```
 tail /etc/log/syslog
 ```
+# Contoh rule
+```
+alert tcp [1.0.0.0/8,!1.1.1.0/24] any -> any any (msg:"Example";sid:1000003;rev:001;)
+alert tcp any 90 -> any [100:1000,9999:20000] (msg:"Example"; sid:1000004;rev:001;)
+```
