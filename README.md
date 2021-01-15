@@ -31,4 +31,8 @@ Penjelasan rules diatas:
         unique rule identifier (sid) which for local rules needs to be 1000001 or higher
         rule version number.
 ```
-Jadi rule diatas adalah alert terhadap semua ping ke alamat $HOME_NET
+Jadi rule diatas adalah alert terhadap semua ping ke alamat $HOME_NET, dan jika ada terjadi ping ke server, maka snort akan melakukan log ke /etc/snort/alert dan menghasilkan file tcpdump.log.xxxxxxxxx. Untuk membaca isi file tcpdump dapat menggunakan perintah:
+```
+snort -r tcpdump.log.xxxxxxxxxx
+```
+```
