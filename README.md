@@ -8,7 +8,7 @@ pico /etc/snort/snort.debian.conf
     # You have to use "dpkg-reconfigure snort" to change them.
 
     DEBIAN_SNORT_STARTUP="boot"
-    DEBIAN_SNORT_HOME_NET="serverPublicIPAddress/32"
+    DEBIAN_SNORT_HOME_NET="serverPublicIPAddress/32,serverPublicIPAddress/32"
     DEBIAN_SNORT_OPTIONS=""
     DEBIAN_SNORT_INTERFACE="eth0"
     DEBIAN_SNORT_SEND_STATS="true"
