@@ -44,6 +44,8 @@ jika snort gagal distart, maka perlu diperiksa penyebab kegagalan, misalnya ada 
 ```
 tail /etc/log/syslog
 ```
+# Update rules
+Untuk mengupdate rules dapat diperoleh di https://www.snort.org/downloads#rules.
 # Contoh rule
 ```
 alert tcp [1.0.0.0/8,!1.1.1.0/24] any -> any any (msg:"Example";sid:1000003;rev:001;)
