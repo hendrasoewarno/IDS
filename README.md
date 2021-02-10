@@ -57,8 +57,12 @@ tail /etc/log/syslog
 ```
 # Update rules
 Untuk mengupdate rules dapat diperoleh di https://www.snort.org/downloads#rules.
-# Contoh rule
+# Contoh IDS rule
 ```
 alert tcp [1.0.0.0/8,!1.1.1.0/24] any -> any any (msg:"Example";sid:1000003;rev:001;)
 alert tcp any 90 -> any [100:1000,9999:20000] (msg:"Example"; sid:1000004;rev:001;)
+```
+# Contoh IPS rule
+```
+drop icmp any any -> $HOME_NET any (msg:"ICMP test detected"; GID:1; sid:10000001; rev:001; classtype:icmp-event;)
 ```
