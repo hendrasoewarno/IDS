@@ -61,6 +61,10 @@ Untuk mengupdate rules dapat diperoleh di https://www.snort.org/downloads#rules.
 ```
 alert tcp [1.0.0.0/8,!1.1.1.0/24] any -> any any (msg:"Example";sid:1000003;rev:001;)
 alert tcp any 90 -> any [100:1000,9999:20000] (msg:"Example"; sid:1000004;rev:001;)
+alert tcp any any -> $HOME_NET any (msg:"Nmap NULL Scan"; flags:0; sid:1000005; rev:001;)
+alert tcp any any -> $HOME_NET any (msg:"Nmap FIN Scan"; flags:F; sid:1000006; rev:001;)
+alert tcp any any -> 192.168.1.105 22 (msg:"Nmap XMAS Tree Scan"; flags:FPU; sid:1000007; rev:001;)
+
 ```
 # Contoh IPS rule
 ```
