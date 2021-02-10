@@ -19,6 +19,13 @@ Pada contoh diatas, snort akan bekerja secara host-based dengan memantau ip tert
 ```
 ifconfig eth0 promisc
 ```
+atau secara permanen dapat diset pada file /etc/network/interfaces
+```
+auto eth0
+iface eth0 inet manual
+        up ifconfig eth0 promisc up
+        down ifconfig eth0 promisc down
+```
 Kemudian berikut ini adalah custom script untuk memantau host/jaringan.
 ```
 pico /etc/snort/rules/local.rules
