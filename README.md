@@ -15,7 +15,11 @@ pico /etc/snort/snort.debian.conf
     DEBIAN_SNORT_STATS_RCPT="root"
     DEBIAN_SNORT_STATS_THRESHOLD="1"
 ```
-Pada contoh diatas, snort akan bekerja secara host-based dengan memantau ip tertentu pada interface eth0.
+Pada contoh diatas, snort akan bekerja secara host-based dengan memantau ip tertentu pada interface eth0. Kalau anda ingin menggunakan snort pada modus network-based, maka hal yang perlu dilakukan adalah memastikan bahwa network card yang akan digunakan untuk memantau jaringan adalah berada pada modus Promiscuous yang dapat diaktifkan dengan perintah:
+```
+ifconfig eth0 promisc
+```
+Kemudian berikut ini adalah custom script untuk memantau host/jaringan.
 ```
 pico /etc/snort/rules/local.rules
     alert icmp any any -> $HOME_NET any (msg:"ICMP test"; sid:10000001; rev:001;)
