@@ -70,3 +70,9 @@ alert tcp any any -> 192.168.1.105 22 (msg:"Nmap XMAS Tree Scan"; flags:FPU; sid
 ```
 drop icmp any any -> $HOME_NET any (msg:"ICMP test detected"; GID:1; sid:10000001; rev:001; classtype:icmp-event;)
 ```
+
+# Instalasi pada Kali Linux
+```
+apt-get install libpcap-dev bison flex
+apt-get install snort
+```
