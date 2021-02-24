@@ -56,7 +56,8 @@ jika snort gagal distart, maka perlu diperiksa penyebab kegagalan, misalnya ada 
 tail /etc/log/syslog
 ```
 # Update rules
-Untuk mengupdate rules dapat diperoleh di https://www.snort.org/downloads#rules.
+Untuk mengupdate rules dapat diperoleh di https://www.snort.org/downloads, buat user account, login dan download rule sesuai dengan versi snort yang terinstalasi, misalkan v2.9, dan timpa file-file yang bersesuaian ke masing-masing folder.
+
 # Contoh IDS rule
 ```
 alert tcp [1.0.0.0/8,!1.1.1.0/24] any -> any any (msg:"Example";sid:1000003;rev:001;)
