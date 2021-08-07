@@ -65,8 +65,14 @@ alert tcp any 90 -> any [100:1000,9999:20000] (msg:"Example"; sid:1000004;rev:00
 alert tcp any any -> $HOME_NET any (msg:"Nmap NULL Scan"; flags:0; sid:1000005; rev:001;)
 alert tcp any any -> $HOME_NET any (msg:"Nmap FIN Scan"; flags:F; sid:1000006; rev:001;)
 alert tcp any any -> 192.168.1.105 22 (msg:"Nmap XMAS Tree Scan"; flags:FPU; sid:1000007; rev:001;)
-
+alert udp any any -> 192.168.1.105 any (msg:"DDOS attack"; count 1000, seconds 5; sid: 1000008; rev:001;)
 ```
+Peringatan akan diberikan ketika ada 1000 paket UDP dalam waktu 5 detik dari segala alamat ke target 192.168.1.105.
+```
+alert tcp any any -> 192.168.1.105 any (msg:"Possible TCP SYN DDOS Flood Detection"; flags:S; count 100, seconds 10; sid: 1000009; rev:001;) 
+```
+Peringatan akan diberikan ketika ada 100 paket TCP dengan Flag S dalam waktu 10 detik dari segala alamat ke target 192.168.1.105.
+
 # Contoh IPS rule
 ```
 drop icmp any any -> $HOME_NET any (msg:"ICMP test detected"; GID:1; sid:10000001; rev:001; classtype:icmp-event;)
