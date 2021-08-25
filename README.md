@@ -19,6 +19,10 @@ Pada contoh diatas, snort akan bekerja secara host-based dengan memantau ip tert
 ```
 ifconfig eth0 promisc
 ```
+atau
+```
+ip link set eth0 promisc on
+```
 atau secara permanen dapat diset pada file /etc/network/interfaces
 ```
 auto eth0
@@ -54,6 +58,43 @@ service snort restart
 jika snort gagal distart, maka perlu diperiksa penyebab kegagalan, misalnya ada kesalahan dalam pengetikan rule, maka dapat dilihat pada syslog
 ```
 tail /etc/log/syslog
+```
+# Mengatur Alert Log
+Secara default, snort akan merekam alert pada file /var/log/snort/alert dalam format multiline, jika anda membutuhkan integrasi dengan fail2ban yang melakukan pemeriksaan pola serangan dalam bentuk perbaris dapat dilakukan perubahan setting pada file snort.conf:
+```
+output alert_csv: alert.csv default
+```
+Sehingga snort akan melakukan log pada file /var/log/snor/alert.csv secara default yang terdiri dari variabel sebagai berikut:
+• timestamp
+• sig_generator
+• sig_id
+• sig_rev
+• msg
+• proto
+• src
+• srcport
+• dst
+• dstport
+• ethsrc
+• ethdst
+• ethlen
+• tcpflags
+• tcpseq
+• tcpack
+• tcplen
+• tcpwindow
+• ttl
+• tos
+• id
+• dgmlen
+• iplen
+• icmptype
+• icmpcode
+• icmpid
+• icmpseq
+Dapat dilakukan pembatasan log atas variabel yang menjadi perhatian kita saja dengan setting:
+```
+output alert_csv: alert.csv timestamp,msg,srcip,sport,dstip,dport,protoname,itype,icode
 ```
 # Update rules
 Untuk mengupdate rules dapat diperoleh di https://www.snort.org/downloads, buat user account, login dan download rule sesuai dengan versi snort yang terinstalasi, misalkan v2.9, dan timpa file-file yang bersesuaian ke masing-masing folder.
