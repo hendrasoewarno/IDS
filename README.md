@@ -91,7 +91,20 @@ Sehingga snort akan melakukan log pada file /var/log/snor/alert.csv secara defau
 • icmptype
 • icmpcode
 • icmpid
-• icmpseq
+• icmpseq<br>
+Sehingga hasil log pada /var/log/snort/alert:
+```
+[**] [1:2515:13] WEB-MISC PCT Client_Hello overflow attempt [**]
+[Classification: Attempted Administrator Privilege Gain] [Priority: 1]
+08/26-09:08:01.141534 192.168.0.26:25680 -> 192.168.0.1:443
+TCP TTL:122 TOS:0x0 ID:5833 IpLen:20 DgmLen:627 DF
+***AP*** Seq: 0x185E6AF3  Ack: 0x360BDDE0  Win: 0x413A  TcpLen: 20
+[Xref => http://www.microsoft.com/technet/security/bulletin/MS04-011.mspx][Xref => http://cve.mitre.org/cgi-bin/cvename.cgi?name=2003-0719][Xref => http://www.securityfocus.com/bid/10116]
+```
+menjadi pada /var/log/snort/alert.csv:
+```
+08/26-09:08:01.141534 ,1,2515,13,WEB-MISC PCT Client_Hello overflow attempt,TCP,192.168.0.26,25680,192.168.0.1,443,0:C:42:FF:CE:E3,5C:F3:FC:56:CB:FA,0x23B,***AP***,0x69637C84,0xB683568A,,0xFDB8,122,0,20991,557,20,,,,
+```
 Dapat dilakukan pembatasan log atas variabel yang menjadi perhatian kita saja dengan setting:
 ```
 output alert_csv: alert.csv timestamp,msg,srcip,sport,dstip,dport,protoname,itype,icode
